@@ -110,7 +110,7 @@ include("db.php");
             <div class="card card-booking p-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <div class="img-thumb" style="background-image:url('<?php echo $imgPath; ?>'); background-size:cover; background-position:center;"></div>
+                        <div class="img-thumb" style="background-image:url(&quot;<?php echo $imgPath; ?>&quot;); background-size:cover; background-position:center;"></div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body py-0 ps-md-4">
