@@ -59,33 +59,15 @@ if ($weatherData != null) {
 }
 
 $apiKey = "CF117863AC60432ABABC13AFD193329E";
-$referer = "https://abcdxd.com";
-$userAgent = "GalaExtremists/1.0";
 
-function getApi($url, $params, $ref, $ua)
-{
-    $full = $url . "?" . http_build_query($params);
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $full);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        "Referer: " . $ref,
-        "User-Agent: " . $ua,
-        "Accept: application/json"
-    ));
-    $out = curl_exec($ch);
-    curl_close($ch);
-    return $out;
-}
+$searchUrl = "https://api.content.tripadvisor.com/api/v1/location/search?key=" . $apiKey . "&language=en&searchQuery=" . urlencode($placeTitle);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $searchUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array("Referer: https://abcdxd.com", "Accept: application/json"));
+$searchRaw = curl_exec($ch);
+curl_close($ch);
 
-$searchUrl = "https://api.content.tripadvisor.com/api/v1/location/search";
-$searchParams = array(
-    "key" => $apiKey,
-    "language" => "en",
-    "searchQuery" => $placeTitle
-);
-
-$searchRaw = getApi($searchUrl, $searchParams, $referer, $userAgent);
 $search = json_decode($searchRaw, true);
 
 $taId = "";
@@ -104,12 +86,15 @@ $rating = "";
 $reviews = "";
 
 if ($taId != "") {
-    $detailsUrl = "https://api.content.tripadvisor.com/api/v1/location/" . $taId . "/details";
-    $detailsParams = array(
-        "key" => $apiKey,
-        "language" => "en"
-    );
-    $detailsRaw = getApi($detailsUrl, $detailsParams, $referer, $userAgent);
+    $detailsUrl = "https://api.content.tripadvisor.com/api/v1/location/" . $taId . "/details?key=" . $apiKey . "&language=en";
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $detailsUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Referer: https://abcdxd.com", "Accept: application/json"));
+    $detailsRaw = curl_exec($ch);
+    curl_close($ch);
+
     $d = json_decode($detailsRaw, true);
 
     if ($d != null) {
@@ -140,20 +125,30 @@ if ($taId != "") {
     <title>Book Place</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #8ec6df, #e4d2b8);
-            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
             min-height: 100vh;
         }
 
-        .bg-glass {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
+        .bg-custom {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
+        }
+
+        .img-preview {
+            height: 260px;
+            background: #eee;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
         }
 
         .img-preview {
@@ -182,23 +177,30 @@ if ($taId != "") {
         }
 
         .weather-badge {
-            background: rgba(0, 0, 0, 0.3);
+            background: #ffffff;
             border-radius: 8px;
             display: inline-flex;
             align-items: center;
             padding: 5px 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
         }
 
-        .form-control,
+        .form-control {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+
         .form-control:focus {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
+            background: #fff;
+            box-shadow: none;
+            border-color: #212529;
         }
 
         .btn-main {
             padding: 10px 14px;
             border-radius: 8px;
-            background: rgba(0, 0, 0, 0.5);
+            background: #008080;
             border: none;
             color: white;
             width: 100%;
@@ -217,36 +219,36 @@ if ($taId != "") {
     <?php include("navbar.php"); ?>
 
     <div class="container my-5">
-        <div class="bg-glass p-4 row g-4">
+        <div class="bg-custom p-4 row g-4">
 
             <div class="col-lg-6">
                 <?php if ($temperature != "") { ?>
-                    <div class="mb-3 weather-badge">
+                    <div class="mb-3 weather-badge text-dark">
                         <img src="https://openweathermap.org/img/wn/<?php echo $icon; ?>@2x.png" width="50">
                         <span class="fs-5 fw-bold ms-2"><?php echo $temperature; ?>°C — <?php echo ucfirst($condition); ?></span>
                     </div>
                 <?php } ?>
 
-                <div class="img-preview shadow-sm mb-3" style="background-image:url('images/<?php echo $placeFolder; ?>/1.jpg');"></div>
+                <div class="img-preview shadow-sm mb-3" style="background-image:url(&quot;images/<?php echo $placeFolder; ?>/1.jpg&quot;);"></div>
 
                 <div class="mb-3">
-                    <div class="small-img shadow-sm" style="background-image:url('images/<?php echo $placeFolder; ?>/2.jpg');"></div>
-                    <div class="small-img shadow-sm" style="background-image:url('images/<?php echo $placeFolder; ?>/3.jpg');"></div>
+                    <div class="small-img shadow-sm" style="background-image:url(&quot;images/<?php echo $placeFolder; ?>/2.jpg&quot;);"></div>
+                    <div class="small-img shadow-sm" style="background-image:url(&quot;images/<?php echo $placeFolder; ?>/3.jpg&quot;);"></div>
                 </div>
 
-                <h2 class="fw-bold"><?php echo $placeTitle; ?></h2>
-                <h4 class="text-warning">₱<?php echo number_format($placePrice); ?> <span class="fs-6 text-white">/ night</span></h4>
+                <h2 class="fw-bold text-dark"><?php echo $placeTitle; ?></h2>
+                <h4 class="text-teal fw-bold">₱<?php echo $placePrice; ?> <span class="fs-6 text-muted fw-normal">/ night</span></h4>
 
                 <?php if ($rating != "") { ?>
                     <div class="mt-2 text-warning fw-bold">
-                        <span class="fs-5">★ <?php echo $rating; ?></span>
-                        <span class="text-white fw-normal ms-2">(<?php echo $reviews; ?> reviews)</span>
+                        <span class="fs-5"><i class="fa-solid fa-star"></i> <?php echo $rating; ?></span>
+                        <span class="text-muted fw-normal ms-2">(<?php echo $reviews; ?> reviews)</span>
                     </div>
                 <?php } ?>
 
                 <?php if ($desc != "") { ?>
-                    <div class="mt-3 p-3 bg-black bg-opacity-25 rounded">
-                        <p class="mb-0 small"><?php echo $desc; ?></p>
+                    <div class="mt-3 p-3 bg-light rounded border">
+                        <p class="mb-0 small text-secondary"><?php echo $desc; ?></p>
                     </div>
                 <?php } ?>
 
@@ -256,7 +258,7 @@ if ($taId != "") {
             </div>
 
             <div class="col-lg-6">
-                <div class="bg-white text-dark p-4 rounded-4 shadow-sm h-100">
+                <div class="bg-light text-dark p-4 rounded-4 h-100 border">
                     <h3 class="mb-4 fw-bold">Book Your Stay</h3>
                     <form method="POST" action="b.i.php">
                         <div class="mb-3">
@@ -289,14 +291,16 @@ if ($taId != "") {
                         <input type="hidden" name="img_folder" value="<?php echo $placeFolder; ?>">
                         <input type="hidden" name="price" value="<?php echo $placePrice; ?>">
 
-                        <button class="btn btn-dark w-100 py-2 fw-bold" type="submit">Confirm Booking</button>
-                        <small class="d-block text-center text-muted mt-2">No payment required today</small>
+                        <button class="btn btn-teal w-100 py-2 fw-bold" type="submit">Confirm Booking</button>
+                        <small class="d-block text-center text-muted mt-2">Payment via PayMongo</small>
                     </form>
                 </div>
             </div>
 
         </div>
     </div>
+
+    <?php include("f.php"); ?>
 
 </body>
 

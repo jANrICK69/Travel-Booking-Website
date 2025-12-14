@@ -27,6 +27,30 @@ for ($i = 0; $i < count($hotel); $i = $i + 1) {
     $folder = $hotel[$i][1];
     $images[$i] = "images/" . $folder . "/1.jpg";
     $locations[$i] = $hotel[$i][4];
+
+    $secondaryImages[] = "images/" . $folder . "/2.jpg";
+    $secondaryImages[] = "images/" . $folder . "/3.jpg";
+}
+
+$elnidoFolder = "images/elnido/";
+$elnidoImages = array();
+
+if (is_dir($elnidoFolder)) {
+    $files = scandir($elnidoFolder);
+    foreach ($files as $file) {
+        if ($file != "." && $file != "..") {
+            if (strpos($file, ".jpg") !== false || strpos($file, ".png") !== false) {
+                $elnidoImages[] = $elnidoFolder . $file;
+            }
+        }
+    }
+}
+
+if (!empty($elnidoImages)) {
+    $heroImages = $elnidoImages;
+} else {
+    shuffle($secondaryImages);
+    $heroImages = array_slice($secondaryImages, 0, 10);
 }
 
 $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0.2GzAyBPJlO_X24QBTy-MYQ";
@@ -45,24 +69,14 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #8ec6df, #e4d2b8);
-            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
             min-height: 100vh;
         }
 
         .hero-section {
-            padding: 100px 0;
-        }
-
-        .hero-right {
-            width: 100%;
-            height: 300px;
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 80px 0;
         }
 
         #map {
@@ -111,15 +125,29 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
     <div class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <h1 class="display-3 fw-bold">Travel<br>Around<br>The World</h1>
-                    <p class="lead">Explore the best beautiful tourist spots across the world and enjoy an unforgettable adventure.</p>
-                    <button class="btn btn-light btn-lg mt-3" onclick="window.location='d.php'">Explore The World &rarr;</button>
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="badge bg-coral text-white mb-3 px-3 py-2 rounded-pill fs-6">Tara na tayo!</span>
+                    <h1 class="display-3 fw-bold mb-3">Explore El Nido Wonders</h1>
+                    <p class="lead text-muted mb-4">Rediscover the paradise in El Nido. Experience the crystal clear waters and limestone cliffs.</p>
+                    <button class="btn btn-teal btn-lg rounded-pill px-5 py-3" onclick="window.location='d.php'">Rediscover Now! &rarr;</button>
                 </div>
-                <div class="col-md-6">
-                    <div class="hero-right text-white h2">
-                        <!-- Placeholder or Featured Image -->
-                        Travel & Relax
+                <div class="col-lg-6">
+                    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                        <div class="carousel-inner rounded-4 shadow-sm overflow-hidden" style="height: 450px;">
+                            <?php foreach ($heroImages as $index => $img) { ?>
+                                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?> h-100">
+                                    <img src="<?php echo $img; ?>" class="d-block w-100 h-100" style="object-fit: cover; object-position: center;" alt="El Nido">
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -136,7 +164,7 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
             </div>
 
             <div class="col-md-6">
-                <div class="bg-glass p-4 rounded-4 h-100 text-center text-white d-flex flex-column justify-content-between">
+                <div class="bg-white p-4 rounded-4 shadow-sm h-100 text-center d-flex flex-column justify-content-between border">
                     <div>
                         <div id="featImg" class="feat-img shadow-sm" style="background-image:url('<?php echo $images[0]; ?>');"></div>
                         <div id="featTitle" class="feat-title"><?php echo $names[0]; ?></div>
@@ -221,6 +249,9 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
         showPlace();
     </script>
 
+    <?php include("f.php"); ?>
+
 </body>
 
 </html>
+```

@@ -19,33 +19,41 @@ if (array_key_exists("userID", $_SESSION) == 0) {
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #8ec6df, #e4d2b8);
-            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
             min-height: 100vh;
         }
 
         .box {
             max-width: 420px;
             margin: 80px auto;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
         }
 
         .form-control {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            margin-bottom: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .form-control:focus {
+            background: #fff;
+            box-shadow: none;
+            border-color: #212529;
         }
 
         .btn-main {
-            padding: 10px 16px;
+            padding: 12px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: #008080;
+            border: none;
             color: white;
             width: 100%;
             font-weight: bold;
@@ -53,17 +61,18 @@ if (array_key_exists("userID", $_SESSION) == 0) {
         }
 
         .btn-main:hover {
-            background: rgba(255, 255, 255, 0.4);
+            background: #006666;
             color: white;
         }
 
         .link-text {
-            color: white;
-            text-decoration: underline;
+            color: #212529;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .link-text:hover {
-            color: #e0e0e0;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -91,6 +100,8 @@ if (array_key_exists("userID", $_SESSION) == 0) {
             </div>
         </div>
     </div>
+
+    <?php include("f.php"); ?>
 
 </body>
 

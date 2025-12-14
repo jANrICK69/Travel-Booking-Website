@@ -1,6 +1,6 @@
 <?php
 
-$serverName = "DESKTOP-AATTHHKH\SQLEXPRESS01";
+$serverName = ".\\SQLEXPRESS01";
 
 $connectionOptions = array(
     "Database" => "WebsiteProject",
@@ -14,5 +14,3 @@ if ($conn == false) {
     echo "Could not connect to the database.";
     die(print_r(sqlsrv_errors(), true));
 }
-
-?>

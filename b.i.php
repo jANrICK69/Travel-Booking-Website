@@ -21,14 +21,18 @@ if ($days < 1) {
 }
 $totalPrice = $priceVal * $days;
 
-$sql = "
-INSERT INTO B
-(user_id, hotel_name, email, headcount, date_start, date_end, inquiry, price, img_folder, total_price)
-VALUES
-('$userID', '$hotelName', '$email', '$head', '$start', '$end', '$inq', '$priceVal', '$folderName', '$totalPrice')
-";
+$_SESSION['booking_details'] = [
+    'user_id' => $userID,
+    'hotel_name' => $hotelName,
+    'email' => $email,
+    'headcount' => $head,
+    'date_start' => $start,
+    'date_end' => $end,
+    'inquiry' => $inq,
+    'price' => $priceVal,
+    'img_folder' => $folderName,
+    'total_price' => $totalPrice
+];
 
-sqlsrv_query($conn, $sql);
-
-echo "<script>alert('Your booking was submitted successfully!'); window.location='mb.php';</script>";
+echo "<script>window.location='p.php';</script>";
 exit();

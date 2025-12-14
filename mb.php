@@ -27,23 +27,23 @@ include("db.php");
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #8ec6df, #e4d2b8);
-            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
             min-height: 100vh;
         }
 
         .card-booking {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
+            background: #ffffff;
             border-radius: 12px;
-            border: none;
+            border: 1px solid #eee;
             margin-bottom: 20px;
             transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .card-booking:hover {
-            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .img-thumb {
@@ -55,7 +55,8 @@ include("db.php");
         }
 
         .badge-price {
-            background: rgba(0, 0, 0, 0.5);
+            background: #008080;
+            color: white;
             padding: 5px 10px;
             border-radius: 5px;
             font-weight: bold;
@@ -71,17 +72,13 @@ include("db.php");
         <h2 class="mb-4 fw-bold">My Bookings</h2>
 
         <?php
-        $sql = "SELECT hotel_name, email, headcount, date_start, date_end, inquiry, price, img_folder, total_price
+        $sql = "SELECT id, hotel_name, email, headcount, date_start, date_end, inquiry, price, img_folder, total_price
             FROM B WHERE user_id = '$userID'
             ORDER BY id DESC";
 
         $result = sqlsrv_query($conn, $sql);
 
-        // Check if query failed (beginner check)
         if ($result === false) {
-            // Fallback if total_price column error before schema update
-            // Use old query or just show empty. But we assume schema is updated.
-            // We will just try to continue.
         }
 
         $hasBookings = 0;
@@ -94,13 +91,12 @@ include("db.php");
             $de = $row["date_end"];
             $inq = $row["inquiry"];
             $price = $row["price"];
-            $total = $row["total_price"]; // Fetch stored total price
+            $total = $row["total_price"];
             $folder = $row["img_folder"];
 
             $ds_show = ($ds != null) ? $ds->format("M d, Y") : "";
             $de_show = ($de != null) ? $de->format("M d, Y") : "";
 
-            // Fallback calculation if total_price is null (for old bookings)
             if ($total == null && $ds != null && $de != null) {
                 $diff = $de->getTimestamp() - $ds->getTimestamp();
                 $days = floor($diff / 86400);
@@ -118,26 +114,37 @@ include("db.php");
                     </div>
                     <div class="col-md-8">
                         <div class="card-body py-0 ps-md-4">
-                            <h4 class="card-title fw-bold"><?php echo $hotel; ?></h4>
-                            <p class="mb-2 text-white-50"><small>Booking Reference: #<?php echo rand(1000, 9999); // Fake ref ID 
-                                                                                        ?></small></p>
+                            <h4 class="card-title fw-bold text-dark"><?php echo $hotel; ?></h4>
 
                             <div class="row mt-3">
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 text-secondary">
                                     <p class="mb-1"><strong>Dates:</strong> <br> <?php echo $ds_show; ?> &rarr; <?php echo $de_show; ?></p>
                                     <p class="mb-1"><strong>Guests:</strong> <?php echo $head; ?></p>
                                     <p class="mb-1"><strong>Contact:</strong> <?php echo $email; ?></p>
                                 </div>
                                 <div class="col-sm-6 text-md-end">
-                                    <p class="mb-1">Price per night: ₱<?php echo number_format($price); ?></p>
+                                    <p class="mb-1 text-muted">Price per night: ₱<?php echo $price; ?></p>
                                     <div class="mt-2">
-                                        <span class="badge-price fs-5">Total: ₱<?php echo number_format($total); ?></span>
+                                        <span class="badge-price fs-5">Total: ₱<?php echo $total; ?></span>
+                                    </div>
+
+                                    <div class="mt-3 text-center border p-2 rounded bg-light d-inline-block">
+                                        <?php
+                                        $verifyLink = "http://localhost/WebsiteProject/verify.php?guest=" . urlencode($_SESSION['username']) . "&hotel=" . urlencode($hotel);
+
+                                        $qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=" . urlencode($verifyLink);
+                                        ?>
+                                        <p class="small mb-1 text-muted">Scan at Reception</p>
+                                        <a href="<?php echo $verifyLink; ?>" target="_blank" title="Click to Simulate Scan">
+                                            <img src="<?php echo $qrUrl; ?>" alt="QR" width="120" height="120" class="border">
+                                        </a>
+                                        <p class="small mb-0 mt-1 text-muted">Click QR to Demo</p>
                                     </div>
                                 </div>
                             </div>
 
                             <?php if ($inq != "") { ?>
-                                <div class="mt-3 p-2 bg-black bg-opacity-25 rounded">
+                                <div class="mt-3 p-2 bg-light border rounded text-secondary">
                                     <small><strong>Note:</strong> <?php echo $inq; ?></small>
                                 </div>
                             <?php } ?>
@@ -152,11 +159,13 @@ include("db.php");
             <div class="text-center py-5 bg-white bg-opacity-10 rounded">
                 <h3>No bookings found.</h3>
                 <p>Ready to start your adventure?</p>
-                <a href="d.php" class="btn btn-light mt-2">Explore Destinations</a>
+                <a href="d.php" class="btn btn-teal mt-2">Explore Destinations</a>
             </div>
         <?php } ?>
 
     </div>
+
+    <?php include("f.php"); ?>
 
 </body>
 
