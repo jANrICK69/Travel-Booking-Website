@@ -47,7 +47,7 @@ if (is_dir($elnidoFolder)) {
     }
 }
 
-if (!empty($elnidoImages)) {
+if (count($elnidoImages) > 0) {
     $heroImages = $elnidoImages;
 } else {
     shuffle($secondaryImages);
