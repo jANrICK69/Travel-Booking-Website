@@ -12,6 +12,7 @@ if ($p != $p2) {
     exit();
 }
 
+// Check if email already exists
 $sql = "SELECT mail FROM U WHERE mail = '$e'";
 $result = sqlsrv_query($conn, $sql);
 

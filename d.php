@@ -104,6 +104,7 @@ include("arrayimage.php");
                 $sort = $_GET['sort'];
             }
 
+            // Custom Bubble Sort Implementation
             if ($sort != "default") {
                 $n = count($displayHotels);
                 for ($j = 0; $j < $n - 1; $j++) {
@@ -113,12 +114,14 @@ include("arrayimage.php");
                         $itemA = $displayHotels[$k];
                         $itemB = $displayHotels[$k + 1];
 
+                        // Numeric comparison (no str_replace needed)
                         $priceA = $itemA[2];
                         $priceB = $itemB[2];
                         $ratingA = $itemA[3];
                         $ratingB = $itemB[3];
                         $nameA = $itemA[0];
                         $nameB = $itemB[0];
+                        $displayPrice = $itemA[5]; // Use string for display
 
                         if ($sort == 'price_asc') {
                             if ($priceA > $priceB) $swap = true;
@@ -143,10 +146,11 @@ include("arrayimage.php");
                 }
             }
 
-            foreach ($displayHotels as $h) {
+            for ($i = 0; $i < count($displayHotels); $i = $i + 1) {
+                $h = $displayHotels[$i];
                 $title = $h[0];
                 $folder = $h[1];
-                $price = $h[2];
+                $price = $h[5]; // Display Price (String)
                 $rating = $h[3];
                 $location = $h[4];
                 $origIndex = $h['original_index'];

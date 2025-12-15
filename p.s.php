@@ -4,19 +4,21 @@ session_start();
 include("db.php");
 
 if (array_key_exists('booking_details', $_SESSION)) {
-    $b = $_SESSION['booking_details'];
+    // Retrieve provisional booking data from session
+    $details = $_SESSION['booking_details'];
 
-    $userID = $b['user_id'];
-    $hotelName = $b['hotel_name'];
-    $email = $b['email'];
-    $head = $b['headcount'];
-    $start = $b['date_start'];
-    $end = $b['date_end'];
-    $inq = $b['inquiry'];
-    $priceVal = $b['price'];
-    $folderName = $b['img_folder'];
-    $totalPrice = $b['total_price'];
+    $userID = $details['user_id'];
+    $hotelName = $details['hotel_name'];
+    $email = $details['email'];
+    $head = $details['headcount'];
+    $start = $details['date_start'];
+    $end = $details['date_end'];
+    $inq = $details['inquiry'];
+    $priceVal = $details['price'];
+    $folderName = $details['img_folder'];
+    $totalPrice = $details['total_price'];
 
+    // Insert Confirmed Booking into Database
     $sql = "
     INSERT INTO B
     (user_id, hotel_name, email, headcount, date_start, date_end, inquiry, price, img_folder, total_price)

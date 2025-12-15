@@ -32,13 +32,15 @@ if ($index < 0 || $index >= count($hotel)) {
 
 $placeTitle = $hotel[$index][0];
 $placeFolder = $hotel[$index][1];
-$placePrice = $hotel[$index][2];
+$placePrice = $hotel[$index][2]; // Integer (Math)
+$placePriceDisplay = $hotel[$index][5]; // String (Display)
 $weatherCity = $hotel[$index][4];
 
 $weatherKey = "5e4fb336abdd12d34698f810a87c3ecd";
 $encodedCity = urlencode($weatherCity);
 $weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" . $encodedCity . "&appid=" . $weatherKey . "&units=metric";
 
+// Fetch Weather Data
 $weatherJson = @file_get_contents($weatherUrl);
 $weatherData = json_decode($weatherJson, true);
 
@@ -60,6 +62,7 @@ if ($weatherData != null) {
 
 $apiKey = "CF117863AC60432ABABC13AFD193329E";
 
+// Fetch TripAdvisor Location ID
 $searchUrl = "https://api.content.tripadvisor.com/api/v1/location/search?key=" . $apiKey . "&language=en&searchQuery=" . urlencode($placeTitle);
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $searchUrl);
@@ -237,7 +240,7 @@ if ($taId != "") {
                 </div>
 
                 <h2 class="fw-bold text-dark"><?php echo $placeTitle; ?></h2>
-                <h4 class="text-teal fw-bold">₱<?php echo $placePrice; ?> <span class="fs-6 text-muted fw-normal">/ night</span></h4>
+                <h4 class="text-teal fw-bold">₱<?php echo $placePriceDisplay; ?> <span class="fs-6 text-muted fw-normal">/ night</span></h4>
 
                 <?php if ($rating != "") { ?>
                     <div class="mt-2 text-warning fw-bold">

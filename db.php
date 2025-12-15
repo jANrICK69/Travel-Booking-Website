@@ -1,6 +1,7 @@
 <?php
 
-$serverName = ".\\SQLEXPRESS01";
+//$serverName = ".\\SQLEXPRESS01";
+$serverName = "DESKTOP-AATTHHKH\\SQLEXPRESS01";
 
 $connectionOptions = array(
     "Database" => "WebsiteProject",

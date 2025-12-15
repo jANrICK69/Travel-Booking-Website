@@ -1,13 +1,27 @@
 <?php
 
-$guest = "Unknown";
-$hotel = "Unknown";
-
-if (array_key_exists("guest", $_GET) && $_GET["guest"] != "") {
+// Get parameters from URL
+$guest = "";
+if (array_key_exists("guest", $_GET)) {
     $guest = $_GET["guest"];
 }
-if (array_key_exists("hotel", $_GET) && $_GET["hotel"] != "") {
+
+$hotel = "";
+if (array_key_exists("hotel", $_GET)) {
     $hotel = $_GET["hotel"];
+}
+
+// Set status based on parameters
+$status = "Invalid";
+$message = "Please scan a valid QR code.";
+$icon = "fa-circle-xmark";
+$color = "text-danger";
+
+if ($guest != "" && $hotel != "") {
+    $status = "Verified";
+    $message = "Guest is confirmed.";
+    $icon = "fa-circle-check";
+    $color = "text-success";
 }
 ?>
 <!DOCTYPE html>

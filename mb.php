@@ -72,7 +72,9 @@ include("db.php");
         <h2 class="mb-4 fw-bold">My Bookings</h2>
 
         <?php
-        $sql = "SELECT id, hotel_name, email, headcount, date_start, date_end, inquiry, price, img_folder, total_price
+        $sql = "SELECT id, hotel_name, email, headcount, date_start, date_end, inquiry, 
+            price, total_price, img_folder, 
+            FORMAT(price, 'N0') as f_price, FORMAT(total_price, 'N0') as f_total
             FROM B WHERE user_id = '$userID'
             ORDER BY id DESC";
 
@@ -90,18 +92,21 @@ include("db.php");
             $ds = $row["date_start"];
             $de = $row["date_end"];
             $inq = $row["inquiry"];
-            $price = $row["price"];
-            $total = $row["total_price"];
+            $price_raw = $row["price"];
+            $total_raw = $row["total_price"];
+            $price = $row["f_price"];
+            $total = $row["f_total"];
             $folder = $row["img_folder"];
 
             $ds_show = ($ds != null) ? $ds->format("M d, Y") : "";
             $de_show = ($de != null) ? $de->format("M d, Y") : "";
 
-            if ($total == null && $ds != null && $de != null) {
+            if ($total_raw == null && $ds != null && $de != null) {
                 $diff = $de->getTimestamp() - $ds->getTimestamp();
                 $days = floor($diff / 86400);
                 if ($days < 1) $days = 1;
-                $total = $price * $days;
+                $calc = $price_raw * $days;
+                $total = strrev(implode(',', str_split(strrev($calc), 3)));
             }
 
             $imgPath = "images/" . $folder . "/1.jpg";
@@ -116,6 +121,7 @@ include("db.php");
                         <div class="card-body py-0 ps-md-4">
                             <h4 class="card-title fw-bold text-dark"><?php echo $hotel; ?></h4>
 
+                            <!-- Booking Details -->
                             <div class="row mt-3">
                                 <div class="col-sm-6 text-secondary">
                                     <p class="mb-1"><strong>Dates:</strong> <br> <?php echo $ds_show; ?> &rarr; <?php echo $de_show; ?></p>
@@ -130,6 +136,7 @@ include("db.php");
 
                                     <div class="mt-3 text-center border p-2 rounded bg-light d-inline-block">
                                         <?php
+                                        // Generate QR Code for verification
                                         $verifyLink = "http://localhost/WebsiteProject/verify.php?guest=" . urlencode($_SESSION['username']) . "&hotel=" . urlencode($hotel);
 
                                         $qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=" . urlencode($verifyLink);

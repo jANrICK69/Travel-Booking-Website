@@ -12,6 +12,7 @@ if ($_POST["pass_login"] != "") {
     $p = $_POST["pass_login"];
 }
 
+// Check credentials in database
 $sql = "SELECT id, uname, mail, pass FROM U WHERE mail = '$e' AND pass = '$p'";
 $result = sqlsrv_query($conn, $sql);
 

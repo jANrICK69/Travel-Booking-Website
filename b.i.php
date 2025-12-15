@@ -19,6 +19,7 @@ $days = floor($diff / (60 * 60 * 24));
 if ($days < 1) {
     $days = 1;
 }
+// Calculate total
 $totalPrice = $priceVal * $days;
 
 $_SESSION['booking_details'] = [

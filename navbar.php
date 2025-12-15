@@ -9,6 +9,17 @@ if (array_key_exists("userID", $_SESSION) == 0) {
 $logged = 0;
 $displayName = "";
 
+// Check if user is logged in
+$user = "";
+$btn = "";
+if (array_key_exists("username", $_SESSION) && $_SESSION["username"] != "") {
+    $user = $_SESSION["username"];
+    $btn = "Logout";
+} else {
+    $user = "Guest";
+    $btn = "Login";
+}
+
 if ($_SESSION["username"] != "") {
     $logged = 1;
     $displayName = $_SESSION["username"];

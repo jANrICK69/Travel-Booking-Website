@@ -37,7 +37,8 @@ $elnidoImages = array();
 
 if (is_dir($elnidoFolder)) {
     $files = scandir($elnidoFolder);
-    foreach ($files as $file) {
+    for ($i = 0; $i < count($files); $i = $i + 1) {
+        $file = $files[$i];
         if ($file != "." && $file != "..") {
             if (strpos($file, ".jpg") !== false || strpos($file, ".png") !== false) {
                 $elnidoImages[] = $elnidoFolder . $file;
@@ -134,7 +135,10 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
                 <div class="col-lg-6">
                     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                         <div class="carousel-inner rounded-4 shadow-sm overflow-hidden" style="height: 450px;">
-                            <?php foreach ($heroImages as $index => $img) { ?>
+                            <?php
+                            for ($index = 0; $index < count($heroImages); $index = $index + 1) {
+                                $img = $heroImages[$index];
+                            ?>
                                 <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?> h-100">
                                     <img src="<?php echo $img; ?>" class="d-block w-100 h-100" style="object-fit: cover; object-position: center;" alt="El Nido">
                                 </div>
