@@ -141,7 +141,11 @@ $page = basename($_SERVER["PHP_SELF"]);
             <ul class="navbar-nav mb-2 mb-lg-0 fw-bold gap-4 align-items-center">
                 <li class="nav-item"><a class="nav-link text-teal" href="hp.php"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li class="nav-item"><a class="nav-link text-teal" href="d.php"><i class="fa-solid fa-hotel"></i> Destinations</a></li>
-                <li class="nav-item"><a class="nav-link text-teal" href="mb.php"><i class="fa-solid fa-calendar-check"></i> My Bookings</a></li>
+                <?php if ($logged == 1) { ?>
+                    <li class="nav-item"><a class="nav-link text-teal" href="mb.php"><i class="fa-solid fa-calendar-check"></i> My Bookings</a></li>
+                <?php } else { ?>
+                    <li class="nav-item"><a class="nav-link text-teal" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fa-solid fa-calendar-check"></i> My Bookings</a></li>
+                <?php } ?>
                 <li class="nav-item"><a class="nav-link text-teal" href="a.php"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
             </ul>
         </div>

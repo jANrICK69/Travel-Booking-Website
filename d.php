@@ -170,7 +170,7 @@ include("arrayimage.php");
                         </div>
                         <div class="card-footer p-0 border-0">
                             <?php if ($logged == 0) { ?>
-                                <button class="book-btn" onclick="window.location='l.php'">Login to Book</button>
+                                <button class="book-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login to Book</button>
                             <?php } else { ?>
                                 <form method="GET" action="b.php" class="m-0">
                                     <input type="hidden" name="index" value="<?php echo $origIndex; ?>">

@@ -18,8 +18,8 @@
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                 <h6 class="text-uppercase fw-bold mb-4">Links</h6>
                 <p><a href="hp.php" class="text-reset">Home</a></p>
-                <p><a href="l.php" class="text-reset">Login</a></p>
-                <p><a href="r.php" class="text-reset">Register</a></p>
+                <p><a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></p>
+                <p><a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></p>
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">

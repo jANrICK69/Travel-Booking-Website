@@ -60,7 +60,7 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
 <html>
 
 <head>
-    <title>HP - Home</title>
+    <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
@@ -131,7 +131,7 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
                     <span class="badge bg-coral text-white mb-3 px-3 py-2 rounded-pill fs-6">Tara na tayo!</span>
                     <h1 class="display-3 fw-bold mb-3">Explore El Nido Wonders</h1>
                     <p class="lead text-muted mb-4">Rediscover the paradise in El Nido. Experience the crystal clear waters and limestone cliffs.</p>
-                    <button class="btn btn-teal btn-lg rounded-pill px-5 py-3" onclick="window.location='d.php'">Rediscover Now! &rarr;</button>
+                    <button class="btn btn-teal btn-lg rounded-pill px-5 py-3" onclick="window.location='d.php'">Rediscover Now! <i class="fa-solid fa-caret-right"></i></button>
                 </div>
                 <div class="col-lg-6">
                     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
@@ -178,8 +178,8 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
                     <div class="mt-4">
                         <button class="btn btn-custom px-4 py-2 fw-bold" onclick="goDetails()">View Details</button>
                         <div class="d-flex justify-content-center gap-3 mt-3">
-                            <button class="btn btn-custom btn-sm" onclick="prevPlace()">&larr; Previous</button>
-                            <button class="btn btn-custom btn-sm" onclick="nextPlace()">Next &rarr;</button>
+                            <button class="btn btn-custom btn-sm" onclick="prevPlace()"><i class="fa-solid fa-caret-left"></i> Previous</button>
+                            <button class="btn btn-custom btn-sm" onclick="nextPlace()">Next <i class="fa-solid fa-caret-right"></i></button>
                         </div>
                     </div>
                 </div>
