@@ -1,1 +1,1 @@
-This is a project for my Finals in Web Developoment Labratory
+This is a project for my Finals in Web Development Labratory
