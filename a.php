@@ -17,6 +17,7 @@ $displayName = $_SESSION["username"];
     <title>Tara - About Us</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -95,21 +96,21 @@ $displayName = $_SESSION["username"];
         <div class="row g-4 mt-4">
             <div class="col-md-4">
                 <div class="p-4 bg-white rounded-4 shadow-sm h-100 text-center border">
-                    <h3 class="text-teal mb-3">📞 Contact Us</h3>
+                    <h3 class="text-teal mb-3"><i class="fa-solid fa-phone"></i> Contact Us</h3>
                     <p class="text-muted">Need assistance? Our support team is here for you 24/7.</p>
                     <p class="fw-bold fs-5 text-dark">+63 912 345 6789</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-4 bg-white rounded-4 shadow-sm h-100 text-center border">
-                    <h3 class="text-teal mb-3">📧 Email</h3>
+                    <h3 class="text-teal mb-3"><i class="fa-solid fa-envelope"></i> Email</h3>
                     <p class="text-muted">Send us your inquiries and we'll get back to you shortly.</p>
                     <p class="fw-bold fs-5 text-dark">support@tara-elnido.com</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-4 bg-white rounded-4 shadow-sm h-100 text-center border">
-                    <h3 class="text-teal mb-3">📍 Visit Us</h3>
+                    <h3 class="text-teal mb-3"><i class="fa-solid fa-location-dot"></i> Visit Us</h3>
                     <p class="text-muted">Come see us at our main office in Palawan.</p>
                     <p class="fw-bold fs-5 text-dark">Rizal St, Brgy. Maligaya, El Nido</p>
                 </div>

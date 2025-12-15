@@ -162,7 +162,7 @@ include("arrayimage.php");
                         <div class="card-img-top" style="background-image:url(&quot;<?php echo $img1; ?>&quot;); background-size:cover; background-position:center;"></div>
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-truncate" title="<?php echo $title; ?>"><?php echo $title; ?></h5>
-                            <p class="card-text small mb-2"><i class="bi bi-geo-alt"></i> <?php echo $location; ?></p>
+                            <p class="card-text small mb-2"><i class="fa-solid fa-location-dot"></i> <?php echo $location; ?></p>
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="fw-bold fs-5">₱<?php echo $price; ?></span>
                                 <span class="text-warning"><i class="fa-solid fa-star"></i> <?php echo $rating; ?></span>

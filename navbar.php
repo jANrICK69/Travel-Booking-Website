@@ -139,30 +139,31 @@ $page = basename($_SERVER["PHP_SELF"]);
         </button>
         <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav mb-2 mb-lg-0 fw-bold gap-4 align-items-center">
-                <li class="nav-item"><a class="nav-link text-teal" href="d.php">Destinations</a></li>
-                <li class="nav-item"><a class="nav-link text-teal" href="mb.php">My Bookings</a></li>
-                <li class="nav-item"><a class="nav-link text-teal" href="a.php">About Us</a></li>
+                <li class="nav-item"><a class="nav-link text-teal" href="hp.php"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link text-teal" href="d.php"><i class="fa-solid fa-hotel"></i> Destinations</a></li>
+                <li class="nav-item"><a class="nav-link text-teal" href="mb.php"><i class="fa-solid fa-calendar-check"></i> My Bookings</a></li>
+                <li class="nav-item"><a class="nav-link text-teal" href="a.php"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
             </ul>
         </div>
 
         <div class="d-flex align-items-center position-absolute end-0 pe-4">
             <?php if ($logged == 0) { ?>
                 <?php if ($page != "l.php") { ?>
-                    <a href="#" class="btn btn-teal text-white btn-sm me-2 rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    <a href="#" class="btn btn-teal text-white btn-sm me-2 rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
                 <?php } ?>
                 <?php if ($page != "r.php") { ?>
-                    <a href="#" class="btn btn-outline-teal btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
+                    <a href="#" class="btn btn-outline-teal btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#registerModal"><i class="fa-solid fa-clipboard-user"></i> Register</a>
                 <?php } ?>
             <?php } else { ?>
                 <span class="text-dark me-2">Welcome,</span>
                 <div class="dropdown">
                     <button class="btn btn-outline-teal btn-sm dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown">
-                        <?php echo $displayName; ?>
+                        <i class="fa-solid fa-user"></i> <?php echo $displayName; ?>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="mb.php">My Bookings</a></li>
                         <li>
-                        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                         </li>
                     </ul>
                 </div>

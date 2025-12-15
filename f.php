@@ -24,9 +24,9 @@
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                <p><i class="fas fa-home me-3"></i> Rizal St, Brgy. Maligaya, El Nido</p>
-                <p><i class="fas fa-envelope me-3"></i> support@tara-elnido.com</p>
-                <p><i class="fas fa-phone me-3"></i> +63 912 345 6789</p>
+                <p><i class="fa-solid fa-location-dot me-3"></i> Rizal St, Brgy. Maligaya, El Nido</p>
+                <p><i class="fa-solid fa-envelope me-3"></i> support@tara-elnido.com</p>
+                <p><i class="fa-solid fa-address-book me-3"></i> +63 912 345 6789</p>
             </div>
         </div>
     </div>
