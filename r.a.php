@@ -8,7 +8,7 @@ $p = $_POST["pass_reg"];
 $p2 = $_POST["pass_reg2"];
 
 if ($p != $p2) {
-    echo "<script>alert('Passwords do not match.'); window.location='r.php';</script>";
+    echo "<script>alert('Passwords do not match.'); window.history.back();</script>";
     exit();
 }
 
@@ -24,11 +24,11 @@ if ($row != null) {
 }
 
 if ($exists == 1) {
-    echo "<script>alert('Email already exists.'); window.location='r.php';</script>";
+    echo "<script>alert('Email already exists.'); window.history.back();</script>";
     exit();
 }
 
 $sql2 = "INSERT INTO U (uname, mail, pass) VALUES ('$u', '$e', '$p')";
 sqlsrv_query($conn, $sql2);
 
-echo "<script>alert('Account created successfully!'); window.location='l.php';</script>";
+echo "<script>alert('Account created successfully! Please Login.'); window.location='hp.php';</script>";

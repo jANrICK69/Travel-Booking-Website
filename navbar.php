@@ -148,10 +148,10 @@ $page = basename($_SERVER["PHP_SELF"]);
         <div class="d-flex align-items-center position-absolute end-0 pe-4">
             <?php if ($logged == 0) { ?>
                 <?php if ($page != "l.php") { ?>
-                    <a href="l.php" class="btn btn-teal text-white btn-sm me-2 rounded-pill px-3">Login</a>
+                    <a href="#" class="btn btn-teal text-white btn-sm me-2 rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                 <?php } ?>
                 <?php if ($page != "r.php") { ?>
-                    <a href="r.php" class="btn btn-outline-teal btn-sm rounded-pill px-3">Register</a>
+                    <a href="#" class="btn btn-outline-teal btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
                 <?php } ?>
             <?php } else { ?>
                 <span class="text-dark me-2">Welcome,</span>
@@ -170,3 +170,67 @@ $page = basename($_SERVER["PHP_SELF"]);
         </div>
     </div>
 </nav>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold">Welcome Back</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form method="POST" action="l.a.php">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Email</label>
+                        <input type="text" name="email_login" class="form-control bg-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Password</label>
+                        <input type="password" name="pass_login" class="form-control bg-light" required>
+                    </div>
+                    <button class="btn btn-teal w-100 py-2 fw-bold" type="submit">Login</button>
+                    <div class="text-center mt-3">
+                        <small>Don't have an account? <a href="#" class="text-teal fw-bold" data-bs-toggle="modal" data-bs-target="#registerModal">Create one</a></small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold">Create Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form method="POST" action="r.a.php">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Username</label>
+                        <input type="text" name="username_reg" class="form-control bg-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Email</label>
+                        <input type="email" name="email_reg" class="form-control bg-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Password</label>
+                        <input type="password" name="pass_reg" class="form-control bg-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Confirm Password</label>
+                        <input type="password" name="pass_reg2" class="form-control bg-light" required>
+                    </div>
+                    <button class="btn btn-outline-teal w-100 py-2 fw-bold" type="submit">Register</button>
+                    <div class="text-center mt-3">
+                        <small>Already have an account? <a href="#" class="text-teal fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

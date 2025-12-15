@@ -35,6 +35,6 @@ if ($found == 1) {
     echo "<script>alert('Login successful!'); window.location='hp.php';</script>";
     exit();
 } else {
-    echo "<script>alert('Incorrect email or password.'); window.location='l.php';</script>";
+    echo "<script>alert('Incorrect email or password.'); window.history.back();</script>";
     exit();
 }
