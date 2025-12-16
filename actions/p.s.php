@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("db.php");
+include("../includes/db.php");
 
 if (array_key_exists('booking_details', $_SESSION)) {
     // Retrieve provisional booking data from session
@@ -30,7 +30,7 @@ if (array_key_exists('booking_details', $_SESSION)) {
 
     $_SESSION['booking_details'] = "";
 } else {
-    echo "<script>window.location='hp.php';</script>";
+    echo "<script>window.location='../mb.php';</script>";
     exit();
 }
 ?>

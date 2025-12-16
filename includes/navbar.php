@@ -167,7 +167,7 @@ $page = basename($_SERVER["PHP_SELF"]);
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="mb.php">My Bookings</a></li>
                         <li>
-                        <li><a class="dropdown-item text-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="actions/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                         </li>
                     </ul>
                 </div>
@@ -185,7 +185,7 @@ $page = basename($_SERVER["PHP_SELF"]);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-4">
-                <form method="POST" action="l.a.php">
+                <form method="POST" action="actions/l.a.php">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Email</label>
                         <input type="text" name="email_login" class="form-control bg-light" required>
@@ -213,7 +213,7 @@ $page = basename($_SERVER["PHP_SELF"]);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-4">
-                <form method="POST" action="r.a.php">
+                <form method="POST" action="actions/r.a.php">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Username</label>
                         <input type="text" name="username_reg" class="form-control bg-light" required>

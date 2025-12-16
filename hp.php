@@ -16,7 +16,7 @@ if ($_SESSION["username"] != "") {
     $displayName = $_SESSION["username"];
 }
 
-include("arrayimage.php");
+include("includes/arrayimage.php");
 
 $names = array();
 $images = array();
@@ -122,7 +122,7 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
 
 <body>
 
-    <?php include("navbar.php"); ?>
+    <?php include("includes/navbar.php"); ?>
 
     <div class="hero-section">
         <div class="container">
@@ -254,7 +254,7 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
         showPlace();
     </script>
 
-    <?php include("f.php"); ?>
+    <?php include("includes/f.php"); ?>
 
 </body>
 

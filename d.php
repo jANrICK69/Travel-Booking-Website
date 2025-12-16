@@ -12,7 +12,7 @@ if ($_SESSION["username"] != "") {
     $logged = 1;
 }
 
-include("arrayimage.php");
+include("includes/arrayimage.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +70,7 @@ include("arrayimage.php");
 
 <body>
 
-    <?php include("navbar.php"); ?>
+    <?php include("includes/navbar.php"); ?>
 
     <div class="container py-5">
         <h2 class="mb-4 fw-bold">All Hotels & Resorts</h2>
@@ -185,7 +185,7 @@ include("arrayimage.php");
         </div>
     </div>
 
-    <?php include("f.php"); ?>
+    <?php include("includes/f.php"); ?>
 
 </body>
 

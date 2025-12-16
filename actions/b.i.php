@@ -1,8 +1,7 @@
 <?php
 session_start();
-include("db.php");
-
-$userID = $_SESSION["userID"];
+header("Location: ../b.php?index=" . $_SESSION['index']);
+exit();
 
 $hotelName = $_POST["hotel_name"];
 $folderName = $_POST["img_folder"];
@@ -35,5 +34,5 @@ $_SESSION['booking_details'] = [
     'total_price' => $totalPrice
 ];
 
-echo "<script>window.location='p.php';</script>";
+header("Location: ../actions/p.php");
 exit();

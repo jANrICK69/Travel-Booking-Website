@@ -16,7 +16,7 @@ if ($_SESSION["username"] == "") {
     exit();
 }
 
-include("arrayimage.php");
+include("includes/arrayimage.php");
 
 $index = 0;
 if (array_key_exists("index", $_GET)) {
@@ -219,7 +219,7 @@ if ($taId != "") {
 
 <body>
 
-    <?php include("navbar.php"); ?>
+    <?php include("includes/navbar.php"); ?>
 
     <div class="container my-5">
         <div class="bg-custom p-4 row g-4">
@@ -303,7 +303,7 @@ if ($taId != "") {
         </div>
     </div>
 
-    <?php include("f.php"); ?>
+    <?php include("includes/f.php"); ?>
 
 </body>
 

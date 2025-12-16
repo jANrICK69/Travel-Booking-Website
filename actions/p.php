@@ -39,8 +39,8 @@ if (array_key_exists('pay_now', $_POST)) {
                     ]
                 ],
                 'payment_method_types' => ['card', 'gcash', 'paymaya'],
-                'success_url' => 'http://localhost/WebsiteProject/p.s.php',
-                'cancel_url' => 'http://localhost/WebsiteProject/p.c.php',
+                'success_url' => 'http://localhost/WebsiteProject/actions/p.s.php?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url' => 'http://localhost/WebsiteProject/actions/p.c.php',
                 'description' => 'Booking ID: ' . $booking_id
             ]
         ]
@@ -73,6 +73,9 @@ if (array_key_exists('pay_now', $_POST)) {
     }
 
     if ($checkout_url != "") {
+        // The original instruction `header("Location: ../hp.php"); . $checkout_url);` is syntactically incorrect.
+        // Assuming the intent was to redirect to the checkout URL, the original line is preserved.
+        // If the intent was to redirect to `../hp.php` instead, please clarify.
         header("Location: " . $checkout_url);
         exit();
     } else {

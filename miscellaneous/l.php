@@ -79,12 +79,12 @@ if (array_key_exists("userID", $_SESSION) == 0) {
 
 <body>
 
-    <?php include("navbar.php"); ?>
+    <?php include("../includes/navbar.php"); ?>
 
     <div class="container">
         <div class="box">
             <h3 class="text-center mb-4 fw-bold">Login</h3>
-            <form method="POST" action="l.a.php">
+            <form method="POST" action="../actions/l.a.php">
                 <label class="form-label fw-bold">Email</label>
                 <input type="text" name="email_login" class="form-control" required>
 

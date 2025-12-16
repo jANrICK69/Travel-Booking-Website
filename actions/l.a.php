@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("../includes/db.php");
 
 $e = "";
 $p = "";
@@ -32,7 +32,7 @@ if ($result !== false) {
 if ($found == 1) {
     $_SESSION["userID"] = $uid;
     $_SESSION["username"] = $uname;
-    echo "<script>alert('Login successful!'); window.location='hp.php';</script>";
+    echo "<script>alert('Login successful!'); window.location='../hp.php';</script>";
     exit();
 } else {
     echo "<script>alert('Incorrect email or password.'); window.history.back();</script>";

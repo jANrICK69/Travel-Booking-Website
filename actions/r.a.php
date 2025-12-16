@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("../includes/db.php");
 
 $u = $_POST["username_reg"];
 $e = $_POST["email_reg"];
@@ -31,4 +31,4 @@ if ($exists == 1) {
 $sql2 = "INSERT INTO U (uname, mail, pass) VALUES ('$u', '$e', '$p')";
 sqlsrv_query($conn, $sql2);
 
-echo "<script>alert('Account created successfully! Please Login.'); window.location='hp.php';</script>";
+echo "<script>alert('Account created successfully! Please Login.'); window.location='../hp.php';</script>";

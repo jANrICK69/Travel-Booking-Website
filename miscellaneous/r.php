@@ -79,12 +79,12 @@ if (array_key_exists("userID", $_SESSION) == 0) {
 
 <body>
 
-    <?php include("navbar.php"); ?>
+    <?php include("../includes/navbar.php"); ?>
 
     <div class="container">
         <div class="box">
             <h3 class="text-center mb-4 fw-bold">Create Account</h3>
-            <form method="POST" action="r.a.php">
+            <form id="regForm" method="POST" action="../actions/r.a.php">
                 <label class="form-label fw-bold">Username</label>
                 <input type="text" name="username_reg" class="form-control" required>
 

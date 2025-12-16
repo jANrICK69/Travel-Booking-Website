@@ -14,7 +14,7 @@ if ($_SESSION["username"] == "") {
 }
 
 $userID = $_SESSION["userID"];
-include("db.php");
+include("includes/db.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +66,7 @@ include("db.php");
 
 <body>
 
-    <?php include("navbar.php"); ?>
+    <?php include("includes/arrayimage.php"); ?>
 
     <div class="container py-5">
         <h2 class="mb-4 fw-bold">My Bookings</h2>
@@ -172,7 +172,7 @@ include("db.php");
 
     </div>
 
-    <?php include("f.php"); ?>
+    <?php include("includes/f.php"); ?>
 
 </body>
 

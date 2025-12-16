@@ -57,7 +57,7 @@ $displayName = $_SESSION["username"];
 
 <body>
 
-    <?php include("navbar.php"); ?>
+    <?php include("includes/navbar.php"); ?>
 
     <div class="hero-about text-center">
         <div class="video-background">
@@ -118,7 +118,7 @@ $displayName = $_SESSION["username"];
         </div>
     </div>
 
-    <?php include("f.php"); ?>
+    <?php include("includes/f.php"); ?>
 
 </body>
 
