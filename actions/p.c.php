@@ -38,7 +38,7 @@ if (array_key_exists('booking_details', $_SESSION)) {
         <p class="text-muted mb-4">You have cancelled the payment process.</p>
         <div class="d-flex gap-2 justify-content-center">
             <a href="../hp.php" class="btn btn-outline-dark px-4 py-2">Go Home</a>
-            <a href="mb.php" class="btn btn-dark px-4 py-2 rounded-pill">My Bookings</a>
+            <a href="../mb.php" class="btn btn-dark px-4 py-2 rounded-pill">My Bookings</a>
         </div>
     </div>
 </body>

@@ -18,7 +18,9 @@ include("includes/arrayimage.php");
 <html>
 
 <head>
-    <title>Destinations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stays</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -162,7 +164,7 @@ include("includes/arrayimage.php");
                         <div class="card-img-top" style="background-image:url(&quot;<?php echo $img1; ?>&quot;); background-size:cover; background-position:center;"></div>
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-truncate" title="<?php echo $title; ?>"><?php echo $title; ?></h5>
-                            <p class="card-text small mb-2"><i class="fa-solid fa-location-dot"></i> <?php echo $location; ?></p>
+                            <p class="card-text small mb-2 text-truncate" title="<?php echo $location; ?>"><i class="fa-solid fa-location-dot"></i> <?php echo $location; ?></p>
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="fw-bold fs-5">₱<?php echo $price; ?></span>
                                 <span class="text-warning"><i class="fa-solid fa-star"></i> <?php echo $rating; ?></span>

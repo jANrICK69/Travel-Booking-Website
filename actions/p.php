@@ -2,7 +2,7 @@
 session_start();
 
 if (array_key_exists('booking_details', $_SESSION) == 0) {
-    echo "<script>alert('No active booking found.'); window.location='hp.php';</script>";
+    echo "<script>alert('No active booking found.'); window.location='../hp.php';</script>";
     exit();
 }
 
@@ -22,38 +22,38 @@ if (array_key_exists('pay_now', $_POST)) {
 
     $amount_centavos = intval($amount * 100);
 
-    $data = [
-        'data' => [
-            'attributes' => [
-                'billing' => [
+    $data = array(
+        'data' => array(
+            'attributes' => array(
+                'billing' => array(
                     'name' => $_SESSION['username'],
                     'email' => 'test@example.com'
-                ],
-                'line_items' => [
-                    [
+                ),
+                'line_items' => array(
+                    array(
                         'currency' => 'PHP',
                         'amount' => $amount_centavos,
                         'description' => 'Booking for ' . $hotel,
                         'name' => $hotel,
                         'quantity' => 1
-                    ]
-                ],
-                'payment_method_types' => ['card', 'gcash', 'paymaya'],
+                    )
+                ),
+                'payment_method_types' => array('card', 'gcash', 'paymaya'),
                 'success_url' => 'http://localhost/WebsiteProject/actions/p.s.php?session_id={CHECKOUT_SESSION_ID}',
                 'cancel_url' => 'http://localhost/WebsiteProject/actions/p.c.php',
                 'description' => 'Booking ID: ' . $booking_id
-            ]
-        ]
-    ];
+            )
+        )
+    );
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
         'Authorization: Basic ' . base64_encode($secret_key . ':')
-    ]);
+    ));
 
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);

@@ -3,7 +3,7 @@
 ## 📂 Root Pages (Frontend)
 These are the main pages the user interacts with.
 - **`hp.php`** - Home Page (Landing page, Hero section, Mapbox preview).
-- **`d.php`** - Destinations Page (Hotel listings, Sorting, Booking modal triggers).
+- **`d.php`** - Stays Page (Hotel listings, Sorting, Booking modal triggers).
 - **`mb.php`** - My Bookings Page (User's booked itineraries, Weather, QR Code).
 - **`a.php`** - About Us Page (Company info, Contact details, YouTube video).
 - **`verify.php`** - Verification page for the QR code.

@@ -60,7 +60,9 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
 <html>
 
 <head>
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tara - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
@@ -140,7 +142,9 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
                             for ($index = 0; $index < count($heroImages); $index = $index + 1) {
                                 $img = $heroImages[$index];
                             ?>
-                                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?> h-100">
+                                <div class="carousel-item <?php if ($index === 0) {
+                                                                echo 'active';
+                                                            } ?> h-100">
                                     <img src="<?php echo $img; ?>" class="d-block w-100 h-100" style="object-fit: cover; object-position: center;" alt="El Nido">
                                 </div>
                             <?php } ?>
@@ -210,7 +214,8 @@ $mapboxKey = "pk.eyJ1Ijoia3lsZWxpeCIsImEiOiJjbWl3ejMzdmIwMWU5M2VxczJyOHBxbXZ2In0
 
             var url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
                 encodeURIComponent(locations[index]) +
-                ".json?access_token=" + mapboxgl.accessToken;
+                ".json?access_token=" + mapboxgl.accessToken +
+                "&country=ph&proximity=119.4260,11.1686";
 
             var xhr = new XMLHttpRequest();
             xhr.open("GET", url, true);

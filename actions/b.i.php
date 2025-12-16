@@ -1,7 +1,8 @@
 <?php
 session_start();
-header("Location: ../b.php?index=" . $_SESSION['index']);
-exit();
+include("../includes/db.php");
+
+$userID = $_SESSION["userID"];
 
 $hotelName = $_POST["hotel_name"];
 $folderName = $_POST["img_folder"];
@@ -21,7 +22,7 @@ if ($days < 1) {
 // Calculate total
 $totalPrice = $priceVal * $days;
 
-$_SESSION['booking_details'] = [
+$_SESSION['booking_details'] = array(
     'user_id' => $userID,
     'hotel_name' => $hotelName,
     'email' => $email,
@@ -32,7 +33,7 @@ $_SESSION['booking_details'] = [
     'price' => $priceVal,
     'img_folder' => $folderName,
     'total_price' => $totalPrice
-];
+);
 
 header("Location: ../actions/p.php");
 exit();

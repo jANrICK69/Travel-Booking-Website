@@ -125,7 +125,9 @@ if ($taId != "") {
 <html>
 
 <head>
-    <title>Book Place</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -263,7 +265,7 @@ if ($taId != "") {
             <div class="col-lg-6">
                 <div class="bg-light text-dark p-4 rounded-4 h-100 border">
                     <h3 class="mb-4 fw-bold">Book Your Stay</h3>
-                    <form method="POST" action="b.i.php">
+                    <form method="POST" action="actions/b.i.php">
                         <div class="mb-3">
                             <label class="form-label fw-bold">Email Address</label>
                             <input type="email" name="email_box" class="form-control" required placeholder="name@example.com">

@@ -20,8 +20,11 @@ include("includes/db.php");
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Bookings</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
@@ -66,6 +69,7 @@ include("includes/db.php");
 
 <body>
 
+    <?php include("includes/navbar.php"); ?>
     <?php include("includes/arrayimage.php"); ?>
 
     <div class="container py-5">
@@ -98,15 +102,22 @@ include("includes/db.php");
             $total = $row["f_total"];
             $folder = $row["img_folder"];
 
-            $ds_show = ($ds != null) ? $ds->format("M d, Y") : "";
-            $de_show = ($de != null) ? $de->format("M d, Y") : "";
+            $ds_show = "";
+            if ($ds != null) {
+                $ds_show = date_format($ds, "M d, Y");
+            }
+
+            $de_show = "";
+            if ($de != null) {
+                $de_show = date_format($de, "M d, Y");
+            }
 
             if ($total_raw == null && $ds != null && $de != null) {
-                $diff = $de->getTimestamp() - $ds->getTimestamp();
+                $diff = date_timestamp_get($de) - date_timestamp_get($ds);
                 $days = floor($diff / 86400);
                 if ($days < 1) $days = 1;
                 $calc = $price_raw * $days;
-                $total = strrev(implode(',', str_split(strrev($calc), 3)));
+                $total = number_format($calc);
             }
 
             $imgPath = "images/" . $folder . "/1.jpg";
@@ -166,7 +177,7 @@ include("includes/db.php");
             <div class="text-center py-5 bg-white bg-opacity-10 rounded">
                 <h3>No bookings found.</h3>
                 <p>Ready to start your adventure?</p>
-                <a href="d.php" class="btn btn-teal mt-2">Explore Destinations</a>
+                <a href="d.php" class="btn btn-teal mt-2">Explore Stays</a>
             </div>
         <?php } ?>
 

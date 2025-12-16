@@ -76,7 +76,7 @@ if (array_key_exists('booking_details', $_SESSION)) {
         </div>
         <h2 class="fw-bold text-success mb-3">Payment Successful!</h2>
         <p class="text-muted mb-4">Thank you for your booking. We have received your payment and your adventure awaits!</p>
-        <a href="mb.php" class="btn btn-teal w-100 py-3 fw-bold rounded-pill">View My Bookings</a>
+        <a href="../mb.php" class="btn btn-teal w-100 py-3 fw-bold rounded-pill">View My Bookings</a>
     </div>
 </body>
 
