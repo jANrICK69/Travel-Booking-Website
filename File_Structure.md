@@ -36,7 +36,7 @@ Project artifacts for headers and presentation.
 - **`README.md`** - Basic repo info.
 - **`File_Structure.md`** - (This file) Map of the project.
 
-## 📦 Legacy / Fallback Pages
+## 📦 Misc. / Et cetera
 Kept for redirects and backward compatibility.
 - **`l.php`** - Legacy Login Page (Standalone).
 - **`r.php`** - Legacy Register Page (Standalone).
