@@ -188,7 +188,7 @@ $page = basename($_SERVER["PHP_SELF"]);
                 <form method="POST" action="actions/l.a.php">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Email</label>
-                        <input type="text" name="email_login" class="form-control bg-light" required>
+                        <input type="email" name="email_login" class="form-control bg-light" required pattern=".*@.*\.com" title="Email must contain @ and end with .com">
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Password</label>
@@ -220,7 +220,7 @@ $page = basename($_SERVER["PHP_SELF"]);
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Email</label>
-                        <input type="email" name="email_reg" class="form-control bg-light" required>
+                        <input type="email" name="email_reg" class="form-control bg-light" required pattern=".*@.*\.com" title="Email must contain @ and end with .com">
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Password</label>

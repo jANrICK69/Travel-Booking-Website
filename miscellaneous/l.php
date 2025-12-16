@@ -89,7 +89,7 @@ if (array_key_exists("userID", $_SESSION) == 0) {
             <h3 class="text-center mb-4 fw-bold">Login</h3>
             <form method="POST" action="../actions/l.a.php">
                 <label class="form-label fw-bold">Email</label>
-                <input type="text" name="email_login" class="form-control" required>
+                <input type="email" name="email_login" class="form-control" required pattern=".*@.*\.com" title="Email must contain @ and end with .com">
 
                 <label class="form-label fw-bold">Password</label>
                 <input type="password" name="pass_login" class="form-control" required>

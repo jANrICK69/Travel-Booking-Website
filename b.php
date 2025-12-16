@@ -268,7 +268,7 @@ if ($taId != "") {
                     <form method="POST" action="actions/b.i.php">
                         <div class="mb-3">
                             <label class="form-label fw-bold">Email Address</label>
-                            <input type="email" name="email_box" class="form-control" required placeholder="name@example.com">
+                            <input type="email" name="email_box" class="form-control" required placeholder="name@example.com" pattern=".*@.*\.com" title="Email must contain @ and end with .com">
                         </div>
 
                         <div class="mb-3">
